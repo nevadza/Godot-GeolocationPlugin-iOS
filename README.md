@@ -84,7 +84,7 @@ The `authorization_changed(int)` signal will be triggered when the user has made
 
 - `should_show_permission_requirement_explanation() -> bool` *[Android only]* - returns true `true` when permissions where rejected before and the user needs an explanation why the permissions are neccesary
 
-- `request_location_capabilty()` - checks device capability for locartion services. Async result (`true`/`false`) is delivered by `location_capability_result` signal
+- `request_location_capability()` - checks device capability for locartion services. Async result (`true`/`false`) is delivered by `location_capability_result` signal
 
 - `should_check_location_capability() -> bool` - returns true `true` when you should manually check for location capability (`true` when `set_auto_check_location_capability` is `false` on Android, alsways `false` on iOS)
 

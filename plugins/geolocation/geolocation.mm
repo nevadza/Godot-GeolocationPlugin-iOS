@@ -90,7 +90,7 @@ typedef PoolByteArray GodotByteArray;
                               @"can_request_permissions",@"is_updating_location",@"is_updating_heading",
                               @"set_distance_filter",@"set_desired_accuracy",@"set_return_string_coordinates",
                               @"request_location",@"start_updating_location",@"stop_updating_location",
-                              @"start_updating_heading",@"stop_updating_heading",@"request_location_capabilty",
+                              @"start_updating_heading",@"stop_updating_heading",@"request_location_capability",
                               @"set_debug_log_signal",@"set_failure_timeout",@"should_check_location_capability"];
     NSString* methodNameString = [[NSString alloc] initWithUTF8String:methodName.utf8().get_data()];
     BOOL contains = [supportedMethods containsObject:methodNameString];
@@ -329,7 +329,7 @@ void Geolocation::_bind_methods() {
     ClassDB::bind_method(D_METHOD("is_updating_location"), &Geolocation::is_updating_location);
     ClassDB::bind_method(D_METHOD("is_updating_heading"), &Geolocation::is_updating_heading);
     
-    ClassDB::bind_method(D_METHOD("request_location_capabilty"), &Geolocation::request_location_capabilty);
+    ClassDB::bind_method(D_METHOD("request_location_capability"), &Geolocation::request_location_capability);
     ClassDB::bind_method(D_METHOD("should_show_permission_requirement_explanation"), &Geolocation::should_show_permission_requirement_explanation);
     ClassDB::bind_method(D_METHOD("should_check_location_capability"), &Geolocation::should_check_location_capability);
     
@@ -437,10 +437,10 @@ bool Geolocation::allows_full_accuracy()
     }
 }
 
-void Geolocation::request_location_capabilty()
+void Geolocation::request_location_capability()
 {
     // execute async because it blocks main thread (and is async on Android anyway)
-    send_log_signal("a request_location_capabilty");
+    send_log_signal("a request_location_capability");
         
     dispatch_async(dispatch_get_global_queue( DISPATCH_QUEUE_PRIORITY_HIGH, 0), ^(void){
         //Background Thread
