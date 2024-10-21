@@ -25,7 +25,7 @@ opts.Add(BoolVariable('simulator', "Compilation platform", 'no'))
 opts.Add(BoolVariable('use_llvm', "Use the LLVM / Clang compiler", 'no'))
 opts.Add(PathVariable('target_path', 'The path where the lib is installed.', 'bin/'))
 opts.Add(EnumVariable('plugin', 'Plugin to build', '', ['','geolocation']))
-opts.Add(EnumVariable('version', 'Godot version to target', '', ['', '3.x', '4.0']))
+opts.Add(EnumVariable('version', 'Godot version to target', '', ['4.3']))
 
 # Updates the environment with the option variables.
 opts.Update(env)
@@ -60,12 +60,12 @@ env.Append(CCFLAGS=["-fmodules", "-fcxx-modules"])
 
 if env['simulator']:
     sdk_name = 'iphonesimulator'
-    env.Append(CCFLAGS=['-mios-simulator-version-min=10.0'])
-    env.Append(LINKFLAGS=["-mios-simulator-version-min=10.0"])
+    env.Append(CCFLAGS=['-mios-simulator-version-min=13.0'])
+    env.Append(LINKFLAGS=["-mios-simulator-version-min=13.0"])
 else:
     sdk_name = 'iphoneos'
-    env.Append(CCFLAGS=['-miphoneos-version-min=10.0'])
-    env.Append(LINKFLAGS=["-miphoneos-version-min=10.0"])
+    env.Append(CCFLAGS=['-miphoneos-version-min=13.0'])
+    env.Append(LINKFLAGS=["-miphoneos-version-min=13.0"])
 
 try:
     sdk_path = decode_utf8(subprocess.check_output(['xcrun', '--sdk', sdk_name, '--show-sdk-path']).strip())
@@ -121,7 +121,7 @@ if env['version'] == '3.x':
 
         if env['arch'] != 'armv7':
             env.Prepend(CXXFLAGS=['-fomit-frame-pointer'])
-elif env['version'] == '4.0':
+elif env['version'] == '4.3':
     env.Prepend(CFLAGS=['-std=gnu11'])
     env.Prepend(CXXFLAGS=['-DVULKAN_ENABLED', '-std=gnu++17'])
 

@@ -1,0 +1,22 @@
+[config]
+name="Geolocation"
+binary="geolocation.xcframework"
+
+initialization="register_geolocation_types"
+deinitialization="unregister_geolocation_types"
+
+[dependencies]
+linked=[]
+embedded=[]
+system=[]
+
+capabilities=[]
+
+files=[]
+
+[plist]
+NSLocationAlwaysAndWhenInUseUsageDescription:string_input="Location data usage description"
+NSLocationWhenInUseUsageDescription:string_input="Location data usage description"
+GeolocationReturnCoordinatesAsString:boolean = true
+GeolocationRequestPermissionsAutomatically:boolean= false
+GeolocationOnlySendLatestLocation:boolean= false

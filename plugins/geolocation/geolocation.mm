@@ -360,7 +360,7 @@ void Geolocation::_bind_methods() {
     //ADD_PROPERTY(PropertyInfo(Variant::BOOL, "return_string_coordinates"), "set_return_string_coordinates", "get_return_string_coordinates");
     
     // signals
-    ADD_SIGNAL(MethodInfo("log", PropertyInfo(Variant::STRING, "message"), PropertyInfo(Variant::REAL, "number")));
+    ADD_SIGNAL(MethodInfo("log", PropertyInfo(Variant::STRING, "message"), PropertyInfo(Variant::FLOAT, "number")));
     ADD_SIGNAL(MethodInfo("error", PropertyInfo(Variant::INT, "errorCode")));
     ADD_SIGNAL(MethodInfo("location_update", PropertyInfo(Variant::DICTIONARY, "locationData")));
     ADD_SIGNAL(MethodInfo("authorization_changed", PropertyInfo(Variant::INT, "status")));
