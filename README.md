@@ -1,15 +1,35 @@
 # Geolocation Plugin
 
-A Godot Geolocation Plugin for iOS. Compatible with Godot 3.5.1.
+A Godot Geolocation Plugin for iOS. Compatible with Godot 4.3.
 
 ## Install plugin
 
 ### iOS
 
- 1. Put the Geolocation-Plugin Folder (containing the .aar and .gdip file) in the `res://ios/plugins` folder in your project
- 2. Add iOS Export (`Project > Export...`)
- 3. Enable `Geolocation` in the `Plugins`-section
- 4. Set `NSLocationAlwaysAndWhenInUseUsageDescription` and `NSLocationWhenInUseUsageDescription` in the `Plugins Plist`-section
+ 1. Navigate to <https://github.com/nevadzask/Godot-GeolocationPlugin-iOS/releases/> and download the latest release.
+ 2. Extract the contents of the project zip file into the `res://ios/plugins` folder in your project. If this folder does not exist, create it manually.
+ 3. Add iOS Export (`Project > Export...`)
+ 4. Enable `Geolocation` in the `Plugins`-section
+ 5. Set `NSLocationAlwaysAndWhenInUseUsageDescription` and `NSLocationWhenInUseUsageDescription` in the `Plugins Plist`-section
+
+<br/>
+
+## Build plugin
+The plugin is based on the official iOS Godot plugins and uses the same scons script to compile (you will need Python and Scons installed):
+
+- Create `./bin` directory.
+- Run `./scripts/generate_headers.sh` to generate header files.
+- Run `./scripts/generate_xcframework.sh geolocation <debug|release|release_debug> <godot_version>`
+  to generate `xcframework` with specific configuration.
+  `xcframework` allows plugin to support both `arm64` device and `arm64` simulator.
+- The result `.xcframework` will be stored in the `bin/` folder as well as intermidiate `.a` binaries.
+- Godot plugin descriptor file is in `plugins/godot_descriptors`
+
+Example: `./scripts/generate_xcframework.sh geolocation release_debug 4.3`
+
+There is an XCode project under `plugins/geolocation.xcodeproj`. You can use XCode to edit source code, but should use the command line scripts to compile (compiling with XCode will lead to ref-counting issues on application exit).
+
+<br/>
 
 ## API
 
@@ -67,7 +87,7 @@ The `authorization_changed(int)` signal will be triggered when the user has made
 
 - `should_show_permission_requirement_explanation() -> bool` *[Android only]* - returns true `true` when permissions where rejected before and the user needs an explanation why the permissions are neccesary
 
-- `request_location_capabilty()` - checks device capability for locartion services. Async result (`true`/`false`) is delivered by `location_capability_result` signal
+- `request_location_capability()` - checks device capability for locartion services. Async result (`true`/`false`) is delivered by `location_capability_result` signal
 
 - `should_check_location_capability() -> bool` - returns true `true` when you should manually check for location capability (`true` when `set_auto_check_location_capability` is `false` on Android, alsways `false` on iOS)
 
@@ -86,17 +106,17 @@ The `authorization_changed(int)` signal will be triggered when the user has made
 
 ### Wrappers for easier usage
 
-#### C\#
-
-<https://github.com/WolfBearGames/Geolocation-Csharp-Wrapper>
+<!-- #### C\# -->
+<!--  -->
+<!-- <https://github.com/WolfBearGames/Geolocation-Csharp-Wrapper> -->
 
 #### GDScript
 
-<https://github.com/WolfBearGames/Geolocation-GDScript-Wrapper>
+<https://github.com/nevadzask/Geolocation-GDScript-Wrapper>
 
-### Example Test App
-
-<https://github.com/WolfBearGames/GeolocationTestApp>
+<!-- ### Example Test App -->
+<!--  -->
+<!-- <https://github.com/WolfBearGames/GeolocationTestApp> -->
 
 ### Enums
 
@@ -189,22 +209,13 @@ enum geolocation_error_codes {
 - `["heading_accuracy"] float` - the heading accuracy in degrees *(-1 when unavailable)*
 - `["timestamp"] int` - the current time as the number of seconds since 1970-01-01
 
-## Compiling
-
-The plugin is based on the official iOS Godot plugins and uses the same scons script to compile (you will need Python and Scons installed):
-
-- Run `./scripts/generate_xcframework.sh geolocation <debug|release|release_debug> <godot_version>`
-  to generate `xcframework` with specific configuration.
-  `xcframework` allows plugin to support both `arm64` device and `arm64` simulator.
-- The result `.xcframework` will be stored in the `bin/` folder as well as intermidiate `.a` binaries.
-
-Example: `./scripts/generate_xcframework.sh geolocation release 3.x`
-
-There is an xCode project under `plugins/geolocation.xcodeproj`. You can use xCode to edit source code, but should use the command line scripts to compile (compiling with xCode will lead to ref-counting issues on application exit).
+<br />
 
 ## License
 
 Copyright 2022 Andreas Ritter (www.wolfbeargames.de)
+
+Copyright 2024 Gabriel Olekšák (www.nevadza.com)
 
 Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
 

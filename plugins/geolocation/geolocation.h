@@ -67,7 +67,7 @@ public:
     Geolocation::GeolocationAuthorizationStatus authorization_status();
     bool allows_full_accuracy();
     
-    void request_location_capabilty(); // new-a -1
+    void request_location_capability(); // new-a -1
     
     bool should_show_permission_requirement_explanation(); // new-a -1
     
