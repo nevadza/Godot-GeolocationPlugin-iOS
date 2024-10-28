@@ -1,6 +1,6 @@
 # Geolocation Plugin
 
-A Godot Geolocation Plugin for Android. Compatible with Godot 4.3.
+A Godot Geolocation Plugin for iOS. Compatible with Godot 4.3.
 
 ## Install plugin
 
@@ -23,10 +23,13 @@ The plugin is based on the official iOS Godot plugins and uses the same scons sc
   to generate `xcframework` with specific configuration.
   `xcframework` allows plugin to support both `arm64` device and `arm64` simulator.
 - The result `.xcframework` will be stored in the `bin/` folder as well as intermidiate `.a` binaries.
+- Godot plugin descriptor file is in `plugins/godot_descriptors`
 
 Example: `./scripts/generate_xcframework.sh geolocation release_debug 4.3`
 
-There is an xCode project under `plugins/geolocation.xcodeproj`. You can use xCode to edit source code, but should use the command line scripts to compile (compiling with xCode will lead to ref-counting issues on application exit).
+There is an XCode project under `plugins/geolocation.xcodeproj`. You can use XCode to edit source code, but should use the command line scripts to compile (compiling with XCode will lead to ref-counting issues on application exit).
+
+<br/>
 
 ## API
 
@@ -109,7 +112,7 @@ The `authorization_changed(int)` signal will be triggered when the user has made
 
 #### GDScript
 
-<https://github.com/WolfBearGames/Geolocation-GDScript-Wrapper>
+<https://github.com/nevadzask/Geolocation-GDScript-Wrapper>
 
 <!-- ### Example Test App -->
 <!--  -->
