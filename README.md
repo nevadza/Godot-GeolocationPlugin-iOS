@@ -1,6 +1,6 @@
 # Geolocation Plugin
 
-A Godot Geolocation Plugin for iOS. Compatible with Godot 4.3.
+A Godot Geolocation Plugin for iOS. Compatible with Godot 4.4.
 
 ## Install plugin
 
@@ -25,7 +25,7 @@ The plugin is based on the official iOS Godot plugins and uses the same scons sc
 - The result `.xcframework` will be stored in the `bin/` folder as well as intermidiate `.a` binaries.
 - Godot plugin descriptor file is in `plugins/godot_descriptors`
 
-Example: `./scripts/generate_xcframework.sh geolocation release_debug 4.3`
+Example: `./scripts/generate_xcframework.sh geolocation release_debug 4.4`
 
 There is an XCode project under `plugins/geolocation.xcodeproj`. You can use XCode to edit source code, but should use the command line scripts to compile (compiling with XCode will lead to ref-counting issues on application exit).
 

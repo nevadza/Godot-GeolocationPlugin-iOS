@@ -137,14 +137,7 @@ typedef PoolByteArray GodotByteArray;
 
 - (Geolocation::GeolocationAuthorizationStatus)authorizationStatus
 {
-    NSUInteger code;
-    
-    if (@available(iOS 14.0, *)) {
-        code = self.locationManager.authorizationStatus;
-    } else {
-        // Fallback on earlier versions
-        code = [CLLocationManager authorizationStatus]; // old
-    }
+    NSUInteger code = self.locationManager.authorizationStatus;
     
     switch(code){
         case kCLAuthorizationStatusNotDetermined:
