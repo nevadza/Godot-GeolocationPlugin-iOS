@@ -25,7 +25,7 @@ opts.Add(BoolVariable('simulator', "Compilation platform", 'no'))
 opts.Add(BoolVariable('use_llvm', "Use the LLVM / Clang compiler", 'no'))
 opts.Add(PathVariable('target_path', 'The path where the lib is installed.', 'bin/'))
 opts.Add(EnumVariable('plugin', 'Plugin to build', '', ['','geolocation']))
-opts.Add(EnumVariable('version', 'Godot version to target', '', ['4.4']))
+opts.Add(EnumVariable('version', 'Godot version to target', '', ['4.5']))
 
 # Updates the environment with the option variables.
 opts.Update(env)
@@ -121,7 +121,7 @@ if env['version'] == '3.x':
 
         if env['arch'] != 'armv7':
             env.Prepend(CXXFLAGS=['-fomit-frame-pointer'])
-elif env['version'] == '4.4':
+elif env['version'] == '4.5':
     env.Prepend(CFLAGS=['-std=gnu11'])
     env.Prepend(CXXFLAGS=['-DVULKAN_ENABLED', '-std=gnu++17'])
 
